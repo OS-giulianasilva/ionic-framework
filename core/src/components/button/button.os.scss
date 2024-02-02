@@ -1,0 +1,179 @@
+@import "./button";
+@import "./button.os.vars";
+
+// OS Design Button
+// --------------------------------------------------
+
+:host {
+  --border-radius: #{$button-os-border-radius};
+  --padding-top: #{$button-os-padding-top};
+  --padding-bottom: #{$button-os-padding-bottom};
+  --padding-start: #{$button-os-padding-start};
+  --padding-end: #{$button-os-padding-end};
+  --transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),
+                background-color 15ms linear,
+                color 15ms linear;
+
+  @include margin($button-os-margin-top, $button-os-margin-end, $button-os-margin-bottom, $button-os-margin-start);
+
+  height: #{$button-os-height};
+
+  font-size: #{$button-os-font-size};
+  font-weight: #{$button-os-font-weight};
+
+  letter-spacing: #{$button-os-letter-spacing};
+}
+
+// OS Design Solid Button
+// --------------------------------------------------
+
+:host(.button-solid) {
+  --background-activated: transparent;
+  --background-hover: #{ion-color(primary, contrast)};
+  --background-focused: #{ion-color(primary, contrast)};
+  --background-activated-opacity: 0;
+  --background-focused-opacity: .24;
+  --background-hover-opacity: .08;
+}
+
+:host(.button-solid.ion-activated) {
+  
+}
+
+// OS Design Outline Button
+// --------------------------------------------------
+
+:host(.button-outline) {
+  --border-width: 2px;
+  --border-style: solid;
+  --box-shadow: none;
+  --background-activated: transparent;
+  --background-focused: #{ion-color(primary, base)};
+  --background-hover: #{ion-color(primary, base)};
+  --background-activated-opacity: 0;
+  --background-focused-opacity: .12;
+  --background-hover-opacity: .04;
+}
+
+:host(.button-outline.ion-activated.ion-color) .button-native {
+  background: transparent;
+}
+
+
+// OS Design Clear Button
+// --------------------------------------------------
+
+:host(.button-clear) {
+  --background-activated: transparent;
+  --background-focused: #{ion-color(primary, base)};
+  --background-hover: #{ion-color(primary, base)};
+  --background-activated-opacity: 0;
+  --background-focused-opacity: .12;
+  --background-hover-opacity: .04;
+}
+
+
+// OS Design Shape Button
+// --------------------------------------------------
+
+:host(.button-round) {
+  --border-radius: #{$button-os-height};
+}
+
+:host(.button-large .button-round) {
+  --border-radius: #{$button-os-large-height};
+}
+
+:host(.button-extra-large .button-round) {
+  --border-radius: #{$button-os-extra-large-height};
+}
+
+:host(.button-rectangular) {
+  --border-radius: 0;
+}
+
+// OS Design Button Sizes
+// --------------------------------------------------
+
+:host(.button-extra-large) {
+  --padding-top: #{$button-os-extra-large-padding-top};
+  --padding-start: #{$button-os-extra-large-padding-start};
+  --padding-end: #{$button-os-extra-large-padding-end};
+  --padding-bottom: #{$button-os-extra-large-padding-bottom};
+
+  height: #{$button-os-extra-large-height};
+
+  font-size: #{$button-os-extra-large-font-size};
+}
+
+:host(.button-large) {
+  --padding-top: #{$button-os-large-padding-top};
+  --padding-start: #{$button-os-large-padding-start};
+  --padding-end: #{$button-os-large-padding-end};
+  --padding-bottom: #{$button-os-large-padding-bottom};
+
+  height: #{$button-os-large-height};
+
+  font-size: #{$button-os-large-font-size};
+}
+
+:host(.button-small) {
+  --padding-top: #{$button-os-small-padding-top};
+  --padding-start: #{$button-os-small-padding-start};
+  --padding-end: #{$button-os-small-padding-end};
+  --padding-bottom: #{$button-os-small-padding-bottom};
+
+  min-height: #{$button-os-small-min-height};
+
+  font-size: #{$button-os-small-font-size};
+}
+
+:host(.button-has-icon-only) {
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+
+// OS strong Button
+// --------------------------------------------------
+
+:host(.button-strong) {
+  font-weight: #{$button-os-strong-font-weight};
+}
+
+::slotted(ion-icon[slot="icon-only"]) {
+  @include padding(0);
+}
+
+
+// OS Design Button: Hover
+// --------------------------------------------------
+
+/**
+ * Only allow overriding of opacity here
+ * as developers should not be overriding
+ * colors when using the color prop.
+ */
+
+:host .button-native::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; 
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border: 2px solid transparent;
+  border-radius: #{$button-os-border-radius};
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+:host(.ion-focused){
+  --overflow: visible;
+}
+
+:host(.ion-focused) .button-native::after {
+  opacity: 1;
+  background: none;
+  border-color: #{ion-color(primary, base, 0.7)};
+}
+

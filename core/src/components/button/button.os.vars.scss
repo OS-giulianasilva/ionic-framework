@@ -1,0 +1,130 @@
+@import "../../themes/ionic.globals.md";
+
+// OS Design Button
+// --------------------------------------------------
+
+/// @prop - Margin top of the button
+$button-os-margin-top:                                  4px;
+
+/// @prop - Margin end of the button
+$button-os-margin-end:                                  2px !default;
+
+/// @prop - Margin bottom of the button
+$button-os-margin-bottom:                               4px !default;
+
+/// @prop - Margin start of the button
+$button-os-margin-start:                                2px !default;
+
+/// @prop - Padding top of the button
+$button-os-padding-top:                                 17px !default;
+
+/// @prop - Padding end of the button
+$button-os-padding-end:                                 16px !default;
+
+/// @prop - Padding bottom of the button
+$button-os-padding-bottom:                              $button-os-padding-top !default;
+
+/// @prop - Padding start of the button
+$button-os-padding-start:                               $button-os-padding-end !default;
+
+/// @prop - Minimum height of the button
+$button-os-height:                                      40px !default;
+
+/// @prop - Border radius of the button
+$button-os-border-radius:                               4px !default;
+
+/// @prop - Font size of the button text
+$button-os-font-size:                                   dynamic-font(14px) !default;
+
+/// @prop - Font weight of the button text
+$button-os-font-weight:                                 500 !default;
+
+$button-os-letter-spacing:                              1%;
+
+
+// OS Design Large Button
+// --------------------------------------------------
+
+/// @prop - Padding top of the large button
+$button-os-large-padding-top:                           16px !default;
+
+/// @prop - Padding end of the large button
+$button-os-large-padding-end:                           24px !default;
+
+/// @prop - Padding bottom of the large button
+$button-os-large-padding-bottom:                        $button-os-large-padding-top !default;
+
+/// @prop - Padding start of the large button
+$button-os-large-padding-start:                         $button-os-large-padding-end !default;
+
+/// @prop - Minimum height of the large button
+$button-os-large-height:                                48px !default;
+
+/// @prop - Font size of the large button
+$button-os-large-font-size:                             dynamic-font(16px) !default;
+
+
+// OS Design Extra Large Button
+// --------------------------------------------------
+
+/// @prop - Padding top of the extra large button
+$button-os-extra-large-padding-top:                           20px !default;
+
+/// @prop - Padding end of the extra large button
+$button-os-extra-large-padding-end:                           32px !default;
+
+/// @prop - Padding bottom of the extra large button
+$button-os-extra-large-padding-bottom:                        $button-os-extra-large-padding-top !default;
+
+/// @prop - Padding start of the extra large button
+$button-os-extra-large-padding-start:                         $button-os-extra-large-padding-end !default;
+
+/// @prop - Minimum height of the extra large button
+$button-os-extra-large-height:                                56px !default;
+
+/// @prop - Font size of the extra large button
+$button-os-extra-large-font-size:                             $button-os-large-font-size !default;
+
+
+// OS Design Small Button
+// --------------------------------------------------
+
+/// @prop - Padding top of the small button
+$button-os-small-padding-top:                           4px !default;
+
+/// @prop - Padding end of the small button
+$button-os-small-padding-end:                           .9em !default;
+
+/// @prop - Padding bottom of the small button
+$button-os-small-padding-bottom:                        $button-os-small-padding-top !default;
+
+/// @prop - Padding start of the small button
+$button-os-small-padding-start:                         $button-os-small-padding-end !default;
+
+/// @prop - Minimum height of the small button
+$button-os-small-min-height:                            2.1em !default;
+
+/// @prop - Font size of the small button
+$button-os-small-font-size:                             dynamic-font(13px) !default;
+
+// OS Design Round Button
+// --------------------------------------------------
+
+/// @prop - Padding top of the round button
+$button-os-round-padding-top:                           $button-os-padding-top !default;
+
+/// @prop - Padding end of the round button
+$button-os-round-padding-end:                           $button-os-padding-end !default;
+
+/// @prop - Padding bottom of the round button
+$button-os-round-padding-bottom:                        $button-os-padding-bottom !default;
+
+/// @prop - Padding start of the round button
+$button-os-round-padding-start:                         $button-os-padding-start !default;
+
+
+// Material Design Decorator Button
+// --------------------------------------------------
+
+/// @prop - Font weight of the strong button
+$button-os-strong-font-weight:                          bold !default;

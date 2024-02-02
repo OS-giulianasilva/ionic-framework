@@ -475,7 +475,7 @@ export namespace Components {
         /**
           * The mode determines which platform styles to use.
          */
-        "mode"?: "ios" | "md";
+        "mode"?: "ios" | "md" | "os";
         /**
           * Specifies the relationship of the target object to the link object. The value is a space-separated list of [link types](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types).
          */
@@ -491,11 +491,11 @@ export namespace Components {
         /**
           * Set to `"round"` for a button with more rounded corners.
          */
-        "shape"?: 'round';
+        "shape"?: 'round' | 'rectangular';
         /**
           * Set to `"small"` for a button with less height and padding, to `"default"` for a button with the default height and padding, or to `"large"` for a button with more height and padding. By default the size is unset, unless the button is inside of an item, where the size is `"small"` by default. Set the size to `"default"` inside of an item to make it a standard size button.
          */
-        "size"?: 'small' | 'default' | 'large';
+        "size"?: 'extra-small' | 'small' | 'default' | 'large' | 'extra-large';
         /**
           * If `true`, activates a button with a heavier font weight.
          */
@@ -5162,7 +5162,7 @@ declare namespace LocalJSX {
         /**
           * The mode determines which platform styles to use.
          */
-        "mode"?: "ios" | "md";
+        "mode"?: "ios" | "md" | "os";
         /**
           * Emitted when the button loses focus.
          */
@@ -5186,11 +5186,11 @@ declare namespace LocalJSX {
         /**
           * Set to `"round"` for a button with more rounded corners.
          */
-        "shape"?: 'round';
+        "shape"?: 'round' | 'rectangular';
         /**
           * Set to `"small"` for a button with less height and padding, to `"default"` for a button with the default height and padding, or to `"large"` for a button with more height and padding. By default the size is unset, unless the button is inside of an item, where the size is `"small"` by default. Set the size to `"default"` inside of an item to make it a standard size button.
          */
-        "size"?: 'small' | 'default' | 'large';
+        "size"?: 'extra-small' | 'small' | 'default' | 'large' | 'extra-large';
         /**
           * If `true`, activates a button with a heavier font weight.
          */

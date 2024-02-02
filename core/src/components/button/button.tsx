@@ -11,7 +11,7 @@ import type { AnimationBuilder, Color } from '../../interface';
 import type { RouterDirection } from '../router/utils/interface';
 
 /**
- * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+ * @virtualProp {"ios" | "md" | "os"} mode - The mode determines which platform styles to use.
  *
  * @slot - Content is placed between the named slots if provided without a slot.
  * @slot icon-only - Should be used on an icon in a button that has no text.
@@ -25,6 +25,7 @@ import type { RouterDirection } from '../router/utils/interface';
   styleUrls: {
     ios: 'button.ios.scss',
     md: 'button.md.scss',
+    os: 'button.os.scss'
   },
   shadow: true,
 })
@@ -110,7 +111,7 @@ export class Button implements ComponentInterface, AnchorInterface, ButtonInterf
   /**
    * Set to `"round"` for a button with more rounded corners.
    */
-  @Prop({ reflect: true }) shape?: 'round';
+  @Prop({ reflect: true }) shape?: 'round' | 'rectangular';
 
   /**
    * Set to `"small"` for a button with less height and padding, to `"default"`
@@ -119,7 +120,7 @@ export class Button implements ComponentInterface, AnchorInterface, ButtonInterf
    * is inside of an item, where the size is `"small"` by default. Set the size to
    * `"default"` inside of an item to make it a standard size button.
    */
-  @Prop({ reflect: true }) size?: 'small' | 'default' | 'large';
+  @Prop({ reflect: true }) size?: 'extra-small' | 'small' | 'default' | 'large' | 'extra-large';
 
   /**
    * If `true`, activates a button with a heavier font weight.
@@ -207,6 +208,22 @@ export class Button implements ComponentInterface, AnchorInterface, ButtonInterf
     }
 
     return 'bounded';
+  }
+
+  private getSize(){
+    const mode = getIonMode(this);
+    if(this.size === undefined && this.inItem)
+      return 'small';
+    if((mode === 'ios' || mode === 'md') && (this.size === 'extra-large' || this.size === 'extra-small'))
+      return undefined;
+    return this.size;
+  }
+
+  private getShape(){
+    const mode = getIonMode(this);
+    if((mode === 'ios' || mode === 'md') && (this.shape === 'rectangular'))
+      return undefined;
+    return this.shape;
   }
 
   /**
@@ -303,16 +320,16 @@ export class Button implements ComponentInterface, AnchorInterface, ButtonInterf
       disabled,
       rel,
       target,
-      size,
       href,
       color,
       expand,
       hasIconOnly,
-      shape,
       strong,
       inheritedAttributes,
     } = this;
-    const finalSize = size === undefined && this.inItem ? 'small' : size;
+
+    const finalSize = this.getSize();
+    const finalShape = this.getShape();
     const TagType = href === undefined ? 'button' : ('a' as any);
     const attrs =
       TagType === 'button'
@@ -352,7 +369,7 @@ export class Button implements ComponentInterface, AnchorInterface, ButtonInterf
           [buttonType]: true,
           [`${buttonType}-${expand}`]: expand !== undefined,
           [`${buttonType}-${finalSize}`]: finalSize !== undefined,
-          [`${buttonType}-${shape}`]: shape !== undefined,
+          [`${buttonType}-${finalShape}`]: finalShape !== undefined,
           [`${buttonType}-${fill}`]: true,
           [`${buttonType}-strong`]: strong,
           'in-toolbar': hostContext('ion-toolbar', this.el),
