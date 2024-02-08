@@ -134,7 +134,7 @@ export type PredefinedColors =
 export type LiteralUnion<T extends U, U = string> = T | (U & Record<never, never>);
 
 export type Color = LiteralUnion<PredefinedColors, string>;
-export type Mode = 'ios' | 'md';
+export type Mode = 'ios' | 'md' | 'os';
 export type ComponentTags = string;
 // eslint-disable-next-line
 export type ComponentRef = Function | HTMLElement | string | null;

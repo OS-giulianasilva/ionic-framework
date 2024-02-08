@@ -1,4 +1,5 @@
 @use "sass:math";
+@import "../../themes/ionic.globals";
 
 /// @prop - Unitless font size of the chip before scaling
 $chip-base-font-size: 14;

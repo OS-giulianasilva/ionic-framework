@@ -1,0 +1,45 @@
+@import "./chip";
+@import "./chip.os.vars";
+
+:host {
+  font-size: $chip-base-font-size-rem;
+}
+
+// OS Chip Sizes
+// --------------------------------------------------
+
+:host(.chip-large) {
+  min-height: #{$chip-os-large-min-height};
+  font-size: #{$chip-os-large-font-size};
+}
+
+:host(.chip-small) {
+  min-height: #{$chip-os-small-min-height};
+  font-size: #{$chip-os-small-font-size};
+}
+
+:host(.chip-large.chip-round) {
+  border-radius: #{$chip-os-large-min-height};
+}
+
+:host(.chip-small.chip-round) {
+  border-radius: #{$chip-os-small-min-height};
+}
+
+:host(.chip-soft) {
+  border-radius: 4px;
+}
+
+:host(.chip-soft) {
+  border-radius: 4px;
+}
+
+:host(.chip-rectangular) {
+  border-radius: 0px;
+}
+
+:host(.chip-selected) {
+  border-width: 1px;
+  border-color: current-color(contrast);
+  border-style: solid;
+}

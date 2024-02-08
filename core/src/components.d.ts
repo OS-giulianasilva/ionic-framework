@@ -664,6 +664,9 @@ export namespace Components {
           * Display an outline style button.
          */
         "outline": boolean;
+        "selected": boolean;
+        "shape"?: 'soft' | 'round' | 'rectangular';
+        "size"?: 'small' | 'large';
     }
     interface IonCol {
         /**
@@ -2537,7 +2540,7 @@ export namespace Components {
         /**
           * The mode determines which platform styles to use.
          */
-        "mode": "ios" | "md";
+        "mode": "ios" | "md" | "os";
         "setRouteId": (id: string, params: ComponentProps | undefined, direction: RouterDirection, animation?: AnimationBuilder) => Promise<RouteWrite>;
         "swipeHandler"?: SwipeGestureHandler;
     }
@@ -5375,6 +5378,9 @@ declare namespace LocalJSX {
           * Display an outline style button.
          */
         "outline"?: boolean;
+        "selected"?: boolean;
+        "shape"?: 'soft' | 'round' | 'rectangular';
+        "size"?: 'small' | 'large';
     }
     interface IonCol {
         /**
@@ -7259,7 +7265,7 @@ declare namespace LocalJSX {
         /**
           * The mode determines which platform styles to use.
          */
-        "mode"?: "ios" | "md";
+        "mode"?: "ios" | "md" | "os";
         "onIonNavDidChange"?: (event: IonRouterOutletCustomEvent<void>) => void;
         "onIonNavWillChange"?: (event: IonRouterOutletCustomEvent<void>) => void;
         "onIonNavWillLoad"?: (event: IonRouterOutletCustomEvent<void>) => void;

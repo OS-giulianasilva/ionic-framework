@@ -13,6 +13,7 @@ import type { Color } from '../../interface';
   styleUrls: {
     ios: 'chip.ios.scss',
     md: 'chip.md.scss',
+    os: 'chip.os.scss'
   },
   shadow: true,
 })
@@ -34,6 +35,12 @@ export class Chip implements ComponentInterface {
    */
   @Prop() disabled = false;
 
+  @Prop({ reflect: true }) size?: 'small' | 'large' = 'large';
+
+  @Prop({ reflect: true }) shape?: 'soft' | 'round' | 'rectangular' = 'round';
+
+  @Prop({ mutable: true }) selected = false;
+
   render() {
     const mode = getIonMode(this);
 
@@ -45,6 +52,9 @@ export class Chip implements ComponentInterface {
           'chip-outline': this.outline,
           'chip-disabled': this.disabled,
           'ion-activatable': true,
+          [`chip-${this.size}`]: this.size !== undefined,
+          [`chip-${this.shape}`]: this.shape !== undefined,
+          'chip-selected': this.selected,
         })}
       >
         <slot></slot>
