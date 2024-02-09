@@ -14,6 +14,7 @@ import { AlertButton, AlertInput } from "./components/alert/alert-interface";
 import { RouteID, RouterDirection, RouterEventDetail, RouteWrite } from "./components/router/utils/interface";
 import { BreadcrumbCollapsedClickEventDetail } from "./components/breadcrumb/breadcrumb-interface";
 import { CheckboxChangeEventDetail } from "./components/checkbox/checkbox-interface";
+import { ChipEventDetail } from "./components/chip/chip-interface";
 import { ScrollBaseDetail, ScrollDetail } from "./components/content/content-interface";
 import { DatetimeChangeEventDetail, DatetimeHighlight, DatetimeHighlightCallback, DatetimeHourCycle, DatetimePresentation, TitleSelectedDatesFormatter } from "./components/datetime/datetime-interface";
 import { SpinnerTypes } from "./components/spinner/spinner-configs";
@@ -50,6 +51,7 @@ export { AlertButton, AlertInput } from "./components/alert/alert-interface";
 export { RouteID, RouterDirection, RouterEventDetail, RouteWrite } from "./components/router/utils/interface";
 export { BreadcrumbCollapsedClickEventDetail } from "./components/breadcrumb/breadcrumb-interface";
 export { CheckboxChangeEventDetail } from "./components/checkbox/checkbox-interface";
+export { ChipEventDetail } from "./components/chip/chip-interface";
 export { ScrollBaseDetail, ScrollDetail } from "./components/content/content-interface";
 export { DatetimeChangeEventDetail, DatetimeHighlight, DatetimeHighlightCallback, DatetimeHourCycle, DatetimePresentation, TitleSelectedDatesFormatter } from "./components/datetime/datetime-interface";
 export { SpinnerTypes } from "./components/spinner/spinner-configs";
@@ -656,6 +658,8 @@ export namespace Components {
           * If `true`, the user cannot interact with the chip.
          */
         "disabled": boolean;
+        "dismissIcon"?: string;
+        "isSelectable": boolean;
         /**
           * The mode determines which platform styles to use.
          */
@@ -666,6 +670,7 @@ export namespace Components {
         "outline": boolean;
         "selected": boolean;
         "shape"?: 'soft' | 'round' | 'rectangular';
+        "showDismissButton": boolean;
         "size"?: 'small' | 'large';
     }
     interface IonCol {
@@ -3285,6 +3290,10 @@ export interface IonCheckboxCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLIonCheckboxElement;
 }
+export interface IonChipCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLIonChipElement;
+}
 export interface IonContentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLIonContentElement;
@@ -3665,7 +3674,19 @@ declare global {
         prototype: HTMLIonCheckboxElement;
         new (): HTMLIonCheckboxElement;
     };
+    interface HTMLIonChipElementEventMap {
+        "ionChange": ChipEventDetail;
+        "ionDismiss": void;
+    }
     interface HTMLIonChipElement extends Components.IonChip, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLIonChipElementEventMap>(type: K, listener: (this: HTMLIonChipElement, ev: IonChipCustomEvent<HTMLIonChipElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLIonChipElementEventMap>(type: K, listener: (this: HTMLIonChipElement, ev: IonChipCustomEvent<HTMLIonChipElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLIonChipElement: {
         prototype: HTMLIonChipElement;
@@ -5370,16 +5391,21 @@ declare namespace LocalJSX {
           * If `true`, the user cannot interact with the chip.
          */
         "disabled"?: boolean;
+        "dismissIcon"?: string;
+        "isSelectable"?: boolean;
         /**
           * The mode determines which platform styles to use.
          */
         "mode"?: "ios" | "md";
+        "onIonChange"?: (event: IonChipCustomEvent<ChipEventDetail>) => void;
+        "onIonDismiss"?: (event: IonChipCustomEvent<void>) => void;
         /**
           * Display an outline style button.
          */
         "outline"?: boolean;
         "selected"?: boolean;
         "shape"?: 'soft' | 'round' | 'rectangular';
+        "showDismissButton"?: boolean;
         "size"?: 'small' | 'large';
     }
     interface IonCol {

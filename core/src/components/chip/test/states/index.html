@@ -282,6 +282,15 @@
           <ion-chip selected="true">
             <ion-label>Rectangular Large</ion-label>
           </ion-chip>
+          <ion-chip is-selectable="true">
+            <ion-label>Selectable</ion-label>
+          </ion-chip>
+          <ion-chip show-dismiss-button="true" >
+            <ion-label>Dismiss button</ion-label>
+          </ion-chip>
+          <ion-chip show-dismiss-button="true" dismiss-icon="trash-outline">
+            <ion-label>Dismiss button</ion-label>
+          </ion-chip>
         </p>
       </ion-content>
     </ion-app>
@@ -296,6 +305,19 @@
       function onClick(ev) {
         console.log('clicked the button', ev.target.innerText);
       }
+
+      const selectableChip = document.querySelector('ion-chip[is-selectable]');
+
+      selectableChip.addEventListener('ionChange', (e) => {
+        console.log(`ionChange fired with value: ${e.detail.selected}`);
+        console.log(e)
+      });
+      
+      const dismissableChip = document.querySelector('ion-chip[show-dismiss-button]');
+
+      dismissableChip.addEventListener('ionDismiss', () => {
+        console.log('ionDismiss fired');
+      });
     </script>
 
     <style>
